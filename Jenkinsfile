@@ -21,7 +21,7 @@ pipeline {
                         parameters([
                             choice(
                                 choices: ['manual', 'flux'],
-                                name: 'Deployment Type'
+                                name: 'DEPLOYMENT_TYPE'
                             ),
                         ])
                     ])
@@ -38,7 +38,7 @@ pipeline {
         stage('Deploy Cluster') {
             steps {
                 withCredentials([string(credentialsId: 'github-token', variable: 'githubToken')]) {
-                    sh "export GITHUB_TOKEN=${githubToken} && ./install-cluster.sh -t flux -f ${GITHUB_ACCOUNT}"
+                    sh "export GITHUB_TOKEN=${githubToken} && ./install-cluster.sh -t ${DEPLOYMENT_TYPE} -f ${GITHUB_ACCOUNT}"
                 }
             }
         }
