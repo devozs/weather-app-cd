@@ -14,26 +14,9 @@ pipeline {
                     properties([
                         parameters([
                             choice(
-                                choices: ['ONE', 'TWO'],
-                                name: 'PARAMETER_01'
+                                choices: ['manual', 'flux'],
+                                name: 'Deployment Type'
                             ),
-                            booleanParam(
-                                defaultValue: true,
-                                description: '',
-                                name: 'BOOLEAN'
-                            ),
-                            text(
-                                defaultValue: '''
-                                this is a multi-line
-                                string parameter example
-                                ''',
-                                 name: 'MULTI-LINE-STRING'
-                            ),
-                            string(
-                                defaultValue: 'scriptcrunch',
-                                name: 'STRING-PARAMETER',
-                                trim: true
-                            )
                         ])
                     ])
                 }
