@@ -15,6 +15,7 @@
 - The Jenkins pipeline is executing the below deployment script. 
 - Its for **testing and demonstration purposes only** and as such its deleting the existing cluster (if created).
 - The pipeline is parameterized to support the below deployment options: Flux or manual manifest deployment.
+- **Note: This is only an example to demonstrate the CD principle. For real life scenarios you might want to split between the pipelines of deployment and infrastructure creation**
 
 
 ### Deployment
