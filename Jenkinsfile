@@ -46,6 +46,7 @@ pipeline {
         stage('Test Deployment') {
             steps {
                 sh "kubectl get pod -A"
+                sh "sleep 10"
                 sh "./verify-deployment.sh"
             }
         }
