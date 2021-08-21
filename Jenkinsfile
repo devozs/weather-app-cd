@@ -6,6 +6,11 @@ pipeline {
         IMAGE_TAG = "latest"
     }
 
+    parameters {
+        choice(choices: "${envList}", name: 'DEPLOYMENT_ENVIRONMENT', description: 'please choose the environment you want to deploy?')
+        booleanParam(name: 'SECURITY_SCAN',defaultValue: false, description: 'container vulnerability scan')
+    }
+
     stages {
         stage('SCM') {
             steps {
@@ -13,14 +18,15 @@ pipeline {
             }
         }
 
-        stage('Install tools') {
+        stage('Clean Previous Deployment') {
             steps {
-                sh "./setup-prerequisites.sh"
+                sh "kind delete cluster --name kind"
             }
         }
 
-        stage('Docker Pull') {
+        stage('Clean Previous Deployment') {
             steps {
+                sh "kind delete cluster --name kind"
                 withCredentials([string(credentialsId: 'docker-hub', variable: 'dockerHubPassword')]) {
                     sh "docker login -u ${REGISTRY} -p ${dockerHubPassword}"
                 }
