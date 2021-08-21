@@ -33,3 +33,11 @@ For example `./install-cluster.sh -t flux -f devozs`
 ###### For more information refer to the [Getting Started with Flux](https://fluxcd.io/docs/get-started/)
 
 ### Testing the deployment
+    POD_NAME=$(kubectl get pods --template '{{range .items}}{{.metadata.name}}{{"\n"}}{{end}}' | grep weather-app)
+    kubectl logs ${POD_NAME}
+Verify that the pod produces the right logs that indicates of successful REST API weather call. for example:
+```
+    2021/08/21 11:44:50.011 [INFO] [org.devozs.weather.WeatherApp] Task performed on: Sat Aug 21 11:44:50 GMT 2021, Thread's name: TIMER
+    2021/08/21 11:44:50.011 [INFO] [org.devozs.weather.WeatherApp] Getting Weather...
+    2021/08/21 11:44:51.722 [INFO] [org.devozs.weather.WeatherApp] Response Code: 200
+```
