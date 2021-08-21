@@ -70,6 +70,8 @@ weather-app-65ccb54c-z7cfv   1/1     Running   0          8m27s
 
 ```
 #### Verify the application pod is running
+Run the following script ```./verify-deployment.sh``` or manually run the below commands:
+    
 ```
     POD_NAME=$(kubectl get pods --template '{{range .items}}{{.metadata.name}}{{end}}' | grep weather-app)
     kubectl logs ${POD_NAME}
