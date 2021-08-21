@@ -34,7 +34,7 @@ For example `./install-cluster.sh -t flux -f devozs`
 
 ### Testing the deployment
 
-Verify the flux pods are deployed successfully
+#### Verify the flux pods are deployed successfully (Skip in case of using Manual Deployment)
 ```
 kubectl get pods -n flux-system
 NAME                                           READY   STATUS    RESTARTS   AGE
@@ -46,14 +46,14 @@ notification-controller-7569f7c974-clccq       1/1     Running   0          8m10
 source-controller-5b976b8dd6-w6gjn             1/1     Running   0          8m10s
 
 ```
-Verify the application pod is deployed successfully. for example:
+#### Verify the application pod is deployed successfully. for example:
 ```
 kubectl get po
 NAME                         READY   STATUS    RESTARTS   AGE
 weather-app-65ccb54c-z7cfv   1/1     Running   0          8m27s
 
 ```
-Verify the application pod is running
+#### Verify the application pod is running
 ```
     POD_NAME=$(kubectl get pods --template '{{range .items}}{{.metadata.name}}{{"\n"}}{{end}}' | grep weather-app)
     kubectl logs ${POD_NAME}
