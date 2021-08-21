@@ -33,7 +33,8 @@ pipeline {
             steps {
                 sh "kubectl get pod -A"
                 sh "POD_NAME=\$(kubectl get pods --template '{{range .items}}{{.metadata.name}}{{end}}' | grep weather-app) && \
-                kubectl logs \${POD_NAME}"
+                POD_LOGS=\$(kubectl logs \${POD_NAME}) && \
+                echo \${POD_LOGS}"
                 sh "kind delete cluster --name kind"
             }
         }
