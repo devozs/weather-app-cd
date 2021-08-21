@@ -11,6 +11,11 @@
 - Using Flux Image Policy for ongoing docker image updates
 - [Setup required tools script](https://github.com/devozs/weather-app-cd/blob/dev/setup-prerequisites.sh)
 ---
+### Jenkins Pipeline 🌩️
+- The Jenkins pipeline is executing the below deployment script. 
+- Its for **testing and demonstration purposes only** and as such its deleting the existing cluster (if created).
+- The pipeline is parameterized to support the below deployment options: Flux or manual manifest deployment.
+
 
 ### Deployment
     cd ~/[your-workspace]
