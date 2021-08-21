@@ -33,10 +33,31 @@ For example `./install-cluster.sh -t flux -f devozs`
 ###### For more information refer to the [Getting Started with Flux](https://fluxcd.io/docs/get-started/)
 
 ### Testing the deployment
+
+Verify the flux pods are deployed successfully
+```
+kubectl get pods -n flux-system
+NAME                                           READY   STATUS    RESTARTS   AGE
+helm-controller-6dcbff747f-76xlv               1/1     Running   0          8m10s
+image-automation-controller-75f784cfdc-29zcg   1/1     Running   0          8m10s
+image-reflector-controller-67d6bdcb59-xb9m5    1/1     Running   0          8m10s
+kustomize-controller-5bb9984cf9-7l7nk          1/1     Running   0          8m10s
+notification-controller-7569f7c974-clccq       1/1     Running   0          8m10s
+source-controller-5b976b8dd6-w6gjn             1/1     Running   0          8m10s
+
+```
+Verify the application pod is deployed successfully. for example:
+```
+kubectl get po
+NAME                         READY   STATUS    RESTARTS   AGE
+weather-app-65ccb54c-z7cfv   1/1     Running   0          8m27s
+
+```
+Verify the application pod is running
+```
     POD_NAME=$(kubectl get pods --template '{{range .items}}{{.metadata.name}}{{"\n"}}{{end}}' | grep weather-app)
     kubectl logs ${POD_NAME}
-Verify that the pod produces the right logs that indicates of successful REST API weather call. for example:
-```
+
     2021/08/21 11:44:50.011 [INFO] [org.devozs.weather.WeatherApp] Task performed on: Sat Aug 21 11:44:50 GMT 2021, Thread's name: TIMER
     2021/08/21 11:44:50.011 [INFO] [org.devozs.weather.WeatherApp] Getting Weather...
     2021/08/21 11:44:51.722 [INFO] [org.devozs.weather.WeatherApp] Response Code: 200
