@@ -147,13 +147,11 @@ elif [[ "${DEPLOYMENT_TYPE}" == "manual" ]]; then
 
   echo "${blue}Applying kubernetes manifests${reset}"
   kubectl apply -f clusters/dev/backend/weather-app.yaml
-  kubectl rollout status deployment/weather-app
-
 else
   echo "Missing deployment type, please use either '-t flux' or '-t manual'"
   exit 1
 fi
-
+kubectl rollout status deployment/weather-app
 
 
 
