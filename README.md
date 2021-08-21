@@ -70,7 +70,7 @@ weather-app-65ccb54c-z7cfv   1/1     Running   0          8m27s
 ```
 #### Verify the application pod is running
 ```
-    POD_NAME=$(kubectl get pods --template '{{range .items}}{{.metadata.name}}{{"\n"}}{{end}}' | grep weather-app)
+    POD_NAME=$(kubectl get pods --template '{{range .items}}{{.metadata.name}}{{end}}' | grep weather-app)
     kubectl logs ${POD_NAME}
 
     2021/08/21 11:44:50.011 [INFO] [org.devozs.weather.WeatherApp] Task performed on: Sat Aug 21 11:44:50 GMT 2021, Thread's name: TIMER
