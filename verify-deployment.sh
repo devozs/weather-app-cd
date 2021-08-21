@@ -4,7 +4,7 @@ POD_NAME=$(kubectl get pods --template '{{range .items}}{{.metadata.name}}{{end}
 POD_LOGS=$(kubectl logs "${POD_NAME}")
 echo "${POD_LOGS}"
 
-if [[ ${POD_LOGS} == *"Response Code: 201"* ]]; then
+if [[ ${POD_LOGS} == *"Response Code: 200"* ]]; then
   echo 'Verification finished successfully'
 else
   echo 'Verification failed'
