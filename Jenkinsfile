@@ -45,8 +45,7 @@ pipeline {
 
         stage('Test Deployment') {
             steps {
-                sh "
-                    kubectl get pod -A && \
+                sh "kubectl get pod -A && \
                     POD_NAME=$(kubectl get pods --template '{{range .items}}{{.metadata.name}}{{"\n"}}{{end}}' | grep weather-app) && \
                     kubectl logs ${POD_NAME}
                 "
