@@ -29,7 +29,6 @@ Help() {
   echo
   echo "Examples:"
   echo " - './install-cluster.sh' will create Kind cluster and apply the k8s manifest"
-  echo " - './install-cluster.sh -b will also build the Docker images as well as create the cluster'"
   echo
   echo "Usage: $(basename "$0") [-h] [-b]"
   echo "Options:"
@@ -132,8 +131,8 @@ if [[ "${DEPLOYMENT_TYPE}" == "flux" ]]; then
   # Flux deployment             #
   # # # # # # # # # # # # # # # #
   flux bootstrap github \
-    --owner=devozs \
-    --repository=ci-cd-k8s-example \
+    --owner="${FLUX_GITHUB_OWNER}" \
+    --repository=weather-app-cd \
     --branch=dev \
     --path=./clusters/dev \
     --personal \
