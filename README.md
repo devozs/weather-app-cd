@@ -37,6 +37,7 @@ For example `./install-cluster.sh -t flux -f devozs`
 #### Verify the flux pods are deployed successfully (Skip in case of using Manual Deployment)
 ```
 kubectl get pods -n flux-system
+
 NAME                                           READY   STATUS    RESTARTS   AGE
 helm-controller-6dcbff747f-76xlv               1/1     Running   0          8m10s
 image-automation-controller-75f784cfdc-29zcg   1/1     Running   0          8m10s
@@ -44,11 +45,20 @@ image-reflector-controller-67d6bdcb59-xb9m5    1/1     Running   0          8m10
 kustomize-controller-5bb9984cf9-7l7nk          1/1     Running   0          8m10s
 notification-controller-7569f7c974-clccq       1/1     Running   0          8m10s
 source-controller-5b976b8dd6-w6gjn             1/1     Running   0          8m10s
+```
+#### Verify the flux is able to identify the Docker images (Skip in case of using Manual Deployment)
+```
+flux get image policy -A
+
+NAMESPACE       NAME            READY   MESSAGE                                                         LATEST IMAGE             
+flux-system     weather-app     True    Latest image tag for 'devozs/weather-app' resolved to: 0.0.3    devozs/weather-app:0.0.3     
 
 ```
+
 #### Verify the application pod is deployed successfully. for example:
 ```
-kubectl get po
+kubectl get pod
+
 NAME                         READY   STATUS    RESTARTS   AGE
 weather-app-65ccb54c-z7cfv   1/1     Running   0          8m27s
 
