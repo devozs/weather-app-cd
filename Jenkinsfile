@@ -32,7 +32,7 @@ pipeline {
         stage('Clean Previous Deployment') {
             steps {
                 sh "kubectl get pod -A"
-                sh "POD_NAME=$(kubectl get pods --template '{{range .items}}{{.metadata.name}}{{end}}' | grep weather-app) && kubectl logs ${POD_NAME}"
+                sh "POD_NAME=\$(kubectl get pods --template '{{range .items}}{{.metadata.name}}{{end}}' | grep weather-app) && kubectl logs ${POD_NAME}"
                 sh "kind delete cluster --name kind"
             }
         }
