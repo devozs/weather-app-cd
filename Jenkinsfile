@@ -46,10 +46,7 @@ pipeline {
         stage('Test Deployment') {
             steps {
                 sh "kubectl get pod -A"
-                sh "POD_NAME=\$(kubectl get pods --template '{{range .items}}{{.metadata.name}}{{end}}' | grep weather-app) && \
-                POD_LOGS=\$(kubectl logs \${POD_NAME}) && \
-                echo \${POD_LOGS} && \
-                if [[ \${POD_LOGS} == *\"Getting Weather\"* ]]; then echo 'Finished' else exit 1 fi"
+                sh "./verify-deployment.sh"
             }
         }
 
