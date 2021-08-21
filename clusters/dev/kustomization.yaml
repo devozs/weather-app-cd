@@ -8,4 +8,4 @@ resources:
 
 images:
   - name: devozs/weather-app
-    newTag: 0.0.1 # {"$imagepolicy": "flux-system:weather-app:tag"}
+    newTag: latest # {"$imagepolicy": "flux-system:weather-app:tag"}
