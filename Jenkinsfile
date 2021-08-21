@@ -31,6 +31,8 @@ pipeline {
 
         stage('Clean Previous Deployment') {
             steps {
+                sh "kubectl get pod -A"
+                sh "kubectl get pods --template '{{range .items}}{{.metadata.name}}{{\"\n\"}}{{end}}'"
                 sh "kind delete cluster --name kind"
             }
         }
@@ -46,6 +48,7 @@ pipeline {
         stage('Test Deployment') {
             steps {
                 sh "kubectl get pod -A"
+                sh "kubectl get pods --template '{{range .items}}{{.metadata.name}}{{\"\n\"}}{{end}}'"
             }
         }
 
