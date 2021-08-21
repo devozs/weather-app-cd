@@ -23,15 +23,5 @@ pipeline {
                 sh "kind delete cluster --name kind"
             }
         }
-
-        stage('Clean Previous Deployment') {
-            steps {
-                sh "kind delete cluster --name kind"
-                withCredentials([string(credentialsId: 'docker-hub', variable: 'dockerHubPassword')]) {
-                    sh "docker login -u ${REGISTRY} -p ${dockerHubPassword}"
-                }
-                sh "docker pull ${REGISTRY}/weather-app:${IMAGE_TAG}"
-            }
-        }
     }
 }
