@@ -23,5 +23,7 @@ There are two possible ways to deploy the [sample Java Maven project](https://gi
     ./install-cluster.sh -t flux -f your-github-account
 For example `./install-cluster.sh -t flux -f devozs`
 
+
 ######Make sure to have [GitHub PAT](https://docs.github.com/en/github/authenticating-to-github/keeping-your-account-and-data-secure/creating-a-personal-access-token)
+
 ######For [Getting Started with Flux](https://fluxcd.io/docs/get-started/)
