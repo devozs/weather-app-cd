@@ -1,0 +1,8 @@
+apiVersion: image.toolkit.fluxcd.io/v1alpha2
+kind: ImageRepository
+metadata:
+  name: weather-app-client
+  namespace: flux-system
+spec:
+  image: devozs/weather-app
+  interval: 1m0s

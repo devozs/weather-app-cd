@@ -1,0 +1,12 @@
+apiVersion: image.toolkit.fluxcd.io/v1alpha2
+kind: ImagePolicy
+metadata:
+  name: weather-app
+  namespace: flux-system
+spec:
+  imageRepositoryRef:
+    name: weather-app
+  policy:
+    semver:
+      range: 0.0.x
+
