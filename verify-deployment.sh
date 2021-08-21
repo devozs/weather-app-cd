@@ -6,6 +6,7 @@ echo "${POD_LOGS}"
 
 if [[ ${POD_LOGS} == *"Response Code: 200"* ]]; then
   echo 'Verification finished successfully'
+  exit 0
 else
   echo 'Verification failed'
   exit 1
