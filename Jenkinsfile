@@ -38,9 +38,8 @@ pipeline {
         stage('Deploy Cluster') {
             steps {
                 withCredentials([string(credentialsId: 'github-token', variable: 'githubToken')]) {
-                    sh "export GITHUB_TOKEN=${githubToken}"
+                    sh "export GITHUB_TOKEN=${githubToken} && ./install-cluster.sh -t flux -f ${GITHUB_ACCOUNT}"
                 }
-                sh "./install-cluster.sh -t flux -f ${GITHUB_ACCOUNT}"
             }
         }
 
