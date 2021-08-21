@@ -8,7 +8,8 @@
 - Deployment options 
   - Simple manual manifest deployment
   - [Flux](https://fluxcd.io/) continence deployment
-- Using Flux Image Policy for ongoing docker image updates 
+- Using Flux Image Policy for ongoing docker image updates
+- [Setup required tools script](https://github.com/devozs/weather-app-cd/blob/dev/setup-prerequisites.sh)
 ---
 
 ### Deployment
