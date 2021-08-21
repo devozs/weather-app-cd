@@ -10,7 +10,7 @@ spec:
     branch: dev
   secretRef:
     name: flux-system
-  url: ssh://git@github.com/devozs/ci-cd-k8s-example
+  url: https://github.com/devozs/weather-app-cd.git
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1beta1
 kind: Kustomization
