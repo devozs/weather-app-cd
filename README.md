@@ -21,6 +21,7 @@
 ### Deployment
     cd ~/[your-workspace]
     https://github.com/devozs/weather-app-cd.git
+    cd weather-app-cd
 
 running the script ```./install-cluster.sh``` will create a Kind cluster.
 
